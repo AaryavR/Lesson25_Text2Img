@@ -7,7 +7,7 @@ API_URL = "https://api-inference.huggingface.co/models/stabilityai/stable-diffus
 
 def generate_image_from_text(prompt: str) -> Image.Image:
     headers = {"Authorization": f"Bearer {HF_API_KEY}"}
-    payload = {"input": prompt}
+    payload = {"inputs": prompt}
 
     try:
         response = requests.post(API_URL, headers=headers, json=payload, timeout=30)
@@ -43,7 +43,7 @@ def main():
                 image.save(f"{file_name}.png")
                 print(f"Image saved as {file_name}.png\n")
         except Exception as e:
-            print(f"An error occurred: {e}'n")
+            print(f"An error occurred: {e}\n")
 
         print("-" * 80 + "\n")
     
